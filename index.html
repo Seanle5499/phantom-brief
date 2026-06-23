@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phantom 2.0 IWB Video Brief · 90% Reference Method</title>
+<style>
+  :root {
+    --bg: #faf9f6;
+    --panel: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e6e2d8;
+    --accent: #c25c2e;
+    --accent-soft: #fdebe0;
+    --warn: #b54a2a;
+    --warn-soft: #fbeae3;
+    --code-bg: #f3f0e8;
+    --highlight: #fff4cc;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: ui-serif, Georgia, "Times New Roman", serif; line-height: 1.55; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); }
+  a:hover { border-bottom-color: var(--accent); }
+  code { background: var(--code-bg); padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.92em; }
+  mark { background: var(--highlight); padding: 1px 3px; border-radius: 2px; }
+  .hero { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 36px; }
+  .hero .eyebrow { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .hero h1 { font-size: 38px; line-height: 1.15; margin: 8px 0 16px; font-weight: 700; }
+  .meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .lede { font-size: 17px; color: #2c2c2c; margin-top: 18px; max-width: 720px; }
+  .product-card { display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: var(--accent-soft); border-radius: 8px; margin-top: 24px; border: 1px solid #f1c8b3; }
+  .product-card .ico { font-size: 28px; }
+  .product-card .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .product-card .name { font-size: 18px; font-weight: 600; }
+  .toc { display: flex; flex-wrap: wrap; gap: 0; margin: 40px 0; padding: 16px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; }
+  .toc .label { color: var(--muted); margin-right: 12px; padding-right: 14px; border-right: 1px solid var(--line); }
+  .toc a { color: var(--ink); border: none; padding: 4px 10px; }
+  .toc a:hover { color: var(--accent); }
+  .toc .sep { color: var(--line); padding: 0 4px; }
+  section { margin: 56px 0; }
+  section h2 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; font-weight: 600; }
+  section h2 .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; margin-right: 8px; }
+  section h3 { font-size: 28px; margin: 0 0 8px; font-weight: 700; line-height: 1.2; }
+  section .tag { display: inline-block; font-size: 12px; padding: 2px 10px; background: var(--code-bg); border-radius: 12px; color: var(--muted); margin-bottom: 24px; }
+  .three-up { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin: 24px 0; }
+  .three-up .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+  .three-up .card h4 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+  .three-up .card .pill { display: inline-block; font-size: 11px; padding: 2px 8px; background: var(--accent-soft); color: var(--accent); border-radius: 10px; margin-bottom: 10px; }
+  .three-up .card p { margin: 0; font-size: 14px; color: #3a3a3a; line-height: 1.55; }
+  .why-list { padding-left: 0; list-style: none; margin: 30px 0; }
+  .why-list li { padding: 18px 0; border-top: 1px solid var(--line); }
+  .why-list li:first-child { border-top: none; padding-top: 0; }
+  .why-list .head { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .steps { counter-reset: step; margin-top: 24px; }
+  .step { display: flex; gap: 18px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .step:first-child { border-top: none; }
+  .step .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 28px; color: var(--accent); font-weight: 700; line-height: 1; min-width: 44px; }
+  .step .body h4 { margin: 0 0 6px; font-size: 17px; font-weight: 700; }
+  .step .body p { margin: 0; font-size: 15px; color: #2a2a2a; }
+  .callout { padding: 18px 20px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 4px; margin-top: 24px; font-size: 15px; }
+  .reject-list { padding: 0; list-style: none; margin: 24px 0 0; }
+  .reject-list li { padding: 18px 0; border-top: 1px solid var(--line); }
+  .reject-list li:first-child { border-top: none; padding-top: 0; }
+  .reject-list .head { font-weight: 700; color: var(--warn); font-size: 15px; margin-bottom: 4px; }
+  .reject-list .head:before { content: "✗  "; }
+  .assets { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+  .assets .row { padding: 16px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .assets .row .lbl { font-size: 13px; color: var(--muted); }
+  .assets .row .url { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; word-break: break-all; }
+  .payment { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+  .payment .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 22px; }
+  .payment .card .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
+  .payment .card .big { font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .payment .card p { margin: 8px 0 0; font-size: 14px; color: #3a3a3a; }
+  .sheet-link { display: block; padding: 28px; background: linear-gradient(135deg, var(--accent), #a64517); color: #fff; border-radius: 10px; margin-top: 24px; text-decoration: none; border: none; }
+  .sheet-link:hover { border: none; opacity: 0.94; }
+  .sheet-link .small { font-size: 13px; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.08em; }
+  .sheet-link .big { font-size: 22px; font-weight: 700; margin: 6px 0; }
+  footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 80px; color: var(--muted); font-size: 13px; }
+  footer .ver { float: right; }
+  @media (max-width: 720px) {
+    .three-up, .payment { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+    section h3 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Brief · Reference Video Series · Phantom 2.0 IWB</div>
+    <h1>🎥 Video Chân Thực Từ Reference</h1>
+    <div class="meta">
+      <div><b>Ver</b> v1</div>
+      <div><b>Owner</b> SouthEDC</div>
+      <div><b>Budget</b> 200k / video</div>
+    </div>
+    <p class="lede">Mỗi reference video → tạo 1 video tương ứng. Script giống 90% — chỉ thay sản phẩm đối thủ bằng sản phẩm của mình. Không sáng tạo lại từ đầu. Giữ nguyên cái hay mà reference đã làm tốt.</p>
+
+    <a class="product-card" href="https://southedc.store/products/phantom-2-0-iwb-holster" target="_blank">
+      <span class="ico">🛡️</span>
+      <span>
+        <span class="lbl">Sản phẩm quảng cáo</span><br>
+        <span class="name">Phantom 2.0 IWB Holster</span><br>
+        <span class="lbl">southedc.store/products/phantom-2-0-iwb-holster ↗</span>
+      </span>
+    </a>
+  </div>
+
+  <nav class="toc">
+    <span class="label">Reading order →</span>
+    <a href="#s01">01 Nguyên tắc 90%</a><span class="sep">›</span>
+    <a href="#s02">02 Quy trình 4 bước</a><span class="sep">›</span>
+    <a href="#s03">03 Lỗi cấm</a><span class="sep">›</span>
+    <a href="#s04">04 Assets</a><span class="sep">›</span>
+    <a href="#s05">05 Payment</a><span class="sep">›</span>
+    <a href="#s06">06 Scripts</a>
+  </nav>
+
+  <section id="s01">
+    <h2><span class="num">01</span> Nguyên tắc 90% giống Reference</h2>
+    <h3>Nguyên tắc cốt lõi</h3>
+    <div class="three-up">
+      <div class="card">
+        <h4>Hook · Mở đầu</h4>
+        <span class="pill">Copy y hệt</span>
+        <p>Hook là phần quan trọng nhất. Reference đã làm rất tốt rồi — catchy, shock, giữ chân người xem. Giữ nguyên 100%. Đừng cố sáng tạo hơn.</p>
+      </div>
+      <div class="card">
+        <h4>Body · Thân</h4>
+        <span class="pill">Swap sản phẩm</span>
+        <p>Giữ nguyên cấu trúc, lập luận, flow. Chỉ thay sản phẩm đối thủ → Phantom 2.0 IWB. Giữ terminology, profanity, giọng đời thường y nguyên.</p>
+      </div>
+      <div class="card">
+        <h4>Close · Kết</h4>
+        <span class="pill">CTA tương tự</span>
+        <p>CTA pattern giống reference. Thay link/tên sản phẩm. Không viết lại.</p>
+      </div>
+    </div>
+
+    <ul class="why-list">
+      <li>
+        <div class="head">Tại sao không viết lại từ đầu?</div>
+        Tất cả các nền tảng AI nếu không biết dùng đều bị "ngoắc rêu" — AI sẽ viết sạch sẽ, bóng bẩy, mất hết chất đời thường. Những reference video này đã giải quyết vấn đề đó rồi. Nếu bắt AI generate lại, toàn bộ cái hay sẽ mất.
+      </li>
+      <li>
+        <div class="head">Giữ nguyên ngôn ngữ thật</div>
+        Profanity, slang, cách nói đời thường trong reference → <code>giữ nguyên</code>. Đây chính là thứ khiến video chân thực. Không clean up, không chỉnh cho "đúng ngữ pháp".
+      </li>
+      <li>
+        <div class="head">Giữ nguyên terminology</div>
+        Các thuật ngữ chuyên ngành (IWB, OWB, appendix carry, draw, retention, concealment…), tên thành phần, cách diễn đạt benefit — <code>dùng tương tự</code> reference. Không paraphrase, không đồng nghĩa hóa.
+      </li>
+    </ul>
+  </section>
+
+  <section id="s02">
+    <h2><span class="num">02</span> Quy trình 4 bước · Mỗi video</h2>
+    <h3>Workflow</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div class="body">
+          <h4>Bóc script reference</h4>
+          <p>Xem video reference, ghi lại toàn bộ script từng câu. Giữ nguyên từ ngữ, không tóm tắt. Đánh dấu rõ: phần nào là Hook, phần nào là Body (nhắc sản phẩm đối thủ), phần nào là Close.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="body">
+          <h4>Tìm kiếm A-roll &amp; B-roll tương ứng</h4>
+          <p>Phân tích visual trong reference: kiểu shot nào, góc quay nào, motion nào (draw motion, IWB carry shot, dressing test, mag swap…). Tìm / quay footage tương đương. <code>Không bắt AI generate hình ảnh từ đầu.</code></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="body">
+          <h4>Swap sản phẩm trong Body</h4>
+          <p>Thay tên + hình ảnh sản phẩm đối thủ → <code>Phantom 2.0 IWB Holster</code>. Giữ nguyên toàn bộ lập luận, flow, cách diễn đạt. Hook và Close giữ y hệt (chỉ đổi tên sản phẩm nếu có nhắc).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div class="body">
+          <h4>Dựng video + QC</h4>
+          <p>Ráp thành phẩm. So sánh song song với reference: nhịp cắt, energy, tone, độ dài có tương đương không. Nếu xem lại mà thấy "sạch quá", "AI quá" → chưa đạt.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout"><b>Self-QC cuối cùng ·</b> Đặt video của bạn cạnh reference. Nếu người xem không nhận ra đây là 2 video khác nhau (trừ sản phẩm) → đạt. Nếu thấy khác biệt rõ ràng về tone, energy, ngôn ngữ → chưa đạt.</div>
+  </section>
+
+  <section id="s03">
+    <h2><span class="num">03</span> Lỗi cấm · Tuyệt đối tránh</h2>
+    <h3>Hard Reject</h3>
+
+    <ul class="reject-list">
+      <li>
+        <div class="head">Bắt AI viết lại script từ đầu</div>
+        Đây là lỗi nặng nhất. Prompt AI kiểu "viết lại script này theo phong cách…" = mất toàn bộ chất tự nhiên. AI sẽ "ngoắc rêu" — viết sạch, lịch sự, mất hết cảm xúc thật.
+      </li>
+      <li>
+        <div class="head">Sáng tạo Hook mới</div>
+        Reference đã có hook catchy / shock. Đừng cố nghĩ ra hook hay hơn. <code>Copy y hệt</code> cấu trúc + cách vào đề.
+      </li>
+      <li>
+        <div class="head">Clean up ngôn ngữ</div>
+        Không sửa slang thành formal. Không xóa profanity. Không chỉnh ngữ pháp cho "đúng". Sự thô, thật, đời thường chính là thứ giữ chân người xem.
+      </li>
+      <li>
+        <div class="head">Thay đổi cấu trúc Body</div>
+        Không đảo thứ tự lập luận. Không thêm/bớt ý. Không pha thêm "info hữu ích" mà reference không có. Chỉ swap sản phẩm, giữ nguyên mọi thứ khác.
+      </li>
+      <li>
+        <div class="head">Military / Militia framing</div>
+        Không dùng footage lính chiến, quân đội, militia, hay framing "kill threat / take down bad guy". Brand safety + Meta ad policy. Giữ trong khung <code>civilian concealed carry</code>, <code>EDC enthusiast</code>, <code>responsible gun owner</code>, <code>sport / range shooting</code>.
+      </li>
+      <li>
+        <div class="head">Dùng footage chất lượng thấp</div>
+        B-roll / A-roll phải tối thiểu <code>1080p</code>. Không blur, không upscale, không watermark.
+      </li>
+    </ul>
+  </section>
+
+  <section id="s04">
+    <h2><span class="num">04</span> Assets · Tài nguyên</h2>
+
+    <div class="assets">
+      <div class="row">
+        <div>
+          <div class="lbl">📋 Scripts revised · Google Sheet (26 videos)</div>
+          <a class="url" href="https://docs.google.com/spreadsheets/d/16ekkEd6FTaul0FgaXuGVx0XKsDBcyE05ypdE5epT2xM/edit?usp=sharing" target="_blank">docs.google.com/spreadsheets/d/16ekkEd6FTaul0FgaXuGVx0XKsDBcyE05ypdE5epT2xM</a>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="lbl">Reference videos · Phantom 2.0</div>
+          <a class="url" href="https://drive.google.com/drive/folders/1CtTd-gZQErU8nraxvK1jF0PgbOtdnFmx?usp=sharing" target="_blank">drive.google.com/drive/folders/1CtTd-gZQErU8nraxvK1jF0PgbOtdnFmx</a>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="lbl">Trang sản phẩm</div>
+          <a class="url" href="https://southedc.store/products/phantom-2-0-iwb-holster" target="_blank">southedc.store/products/phantom-2-0-iwb-holster</a>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="lbl">Khóa học Google Omni</div>
+          <a class="url" href="https://drive.google.com/drive/folders/1IinUloJAJX3O7UxjAirepGHAKuNi8owM?usp=sharing" target="_blank">drive.google.com/drive/folders/1IinUloJAJX3O7UxjAirepGHAKuNi8owM</a>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="lbl">Raw video sản phẩm</div>
+          <a class="url" href="https://drive.google.com/drive/folders/1OZ2CBdbkLWKAG-18c-r_b-FhM-SGQerb" target="_blank">drive.google.com/drive/folders/1OZ2CBdbkLWKAG-18c-r_b-FhM-SGQerb</a>
+        </div>
+      </div>
+    </div>
+    <p style="color:var(--muted); font-size:14px; margin-top:16px;">Mỗi reference video = 1 deliverable. Xem hết folder reference, mỗi video trong đó → tạo 1 video tương ứng cho Phantom 2.0 IWB. Tổng deliverable = tổng số video trong folder reference.</p>
+  </section>
+
+  <section id="s05">
+    <h2><span class="num">05</span> Payment &amp; Lợi ích</h2>
+
+    <h4 style="margin: 24px 0 10px; font-size: 16px; font-weight: 700;">💰 V1 pricing · theo độ dài</h4>
+    <div class="payment" style="grid-template-columns: 1fr 1fr 1fr;">
+      <div class="card">
+        <div class="lbl">1 → 2 phút</div>
+        <div class="big">200.000đ</div>
+        <p>/ video approved</p>
+      </div>
+      <div class="card">
+        <div class="lbl">2 → 3 phút</div>
+        <div class="big">300.000đ</div>
+        <p>/ video approved</p>
+      </div>
+      <div class="card">
+        <div class="lbl">Trên 3 phút</div>
+        <div class="big">500.000đ</div>
+        <p>/ video approved</p>
+      </div>
+    </div>
+
+    <h4 style="margin: 32px 0 10px; font-size: 16px; font-weight: 700;">🔁 V2, V3… của cùng angle</h4>
+    <div class="payment">
+      <div class="card">
+        <div class="lbl">Mỗi version sau v1</div>
+        <div class="big">50.000đ</div>
+        <p>/ video approved. Áp dụng cho mọi version từ v2 trở đi của cùng một angle (vì script & visual đã có khung sẵn từ v1).</p>
+      </div>
+      <div class="card">
+        <div class="lbl">📚 Lợi thế đi kèm</div>
+        <div class="big" style="font-size:20px;">Khóa học trả phí</div>
+        <p>Được học miễn phí nguyên khóa ứng dụng AI làm video chân thực bằng Google Omni. Link khóa học ở Section 04.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:24px;"><b>Quy tắc chung ·</b> Reject = không pay, được resubmit 1 lần trong 48h. V1 = video đầu tiên của 1 angle (theo cột <code>angle</code> trong Google Sheet). V2 trở đi = các script cùng angle nhưng khác biến thể (xem cột <code>video_name</code> dạng <code>angle_v2.mp4</code>, <code>angle_v3.mp4</code>).</div>
+  </section>
+
+  <section id="s06">
+    <h2><span class="num">06</span> Scripts đã revised</h2>
+    <h3>Bám sát 90% rule</h3>
+
+    <p style="font-size:15px; color:#2a2a2a; margin-top:8px;">
+      Mỗi script tương ứng 1 reference video. Tất cả scripts + ghi chú swap đã được chuẩn bị sẵn trong Google Sheet.
+      Phần <mark>highlight</mark> trong script là vùng đã swap (Phantom 2.0 specs) — KHÔNG đọc nhấn, chỉ note để diff vs reference. Hook + pacing + intonation giữ 100% reference.
+    </p>
+
+    <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/16ekkEd6FTaul0FgaXuGVx0XKsDBcyE05ypdE5epT2xM/edit?usp=sharing" target="_blank" id="sheet-link">
+      <div class="small">→ Mở Google Sheet</div>
+      <div class="big">Tất cả scripts revised · 26 videos</div>
+      <div class="small" style="opacity:0.7;">Mỗi row = 1 video. Cột: video name, Drive link, swap notes, revised script.</div>
+    </a>
+
+    <div class="callout" style="margin-top:32px;"><b>QC checklist khi dựng từng video ·</b> Nếu actor đọc "Kydex" / "custom molded to your exact firearm" / "veteran-owned" / "Made in America" / "100,000 carriers" / "6.7 inches draw" → REJECT, redo. Đây là các claim của reference, KHÔNG đúng cho Phantom 2.0.</div>
+  </section>
+
+  <footer>
+    <span>SouthEDC · Video Brief</span>
+    <span class="ver">Phantom 2.0 IWB Reference Series · v1</span>
+  </footer>
+</div>
+</body>
+</html>
