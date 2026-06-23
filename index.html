@@ -297,7 +297,27 @@
       </div>
     </div>
 
-    <div class="callout" style="margin-top:24px;"><b>Quy tắc chung ·</b> Reject = không pay, được resubmit 1 lần trong 48h. V1 = video đầu tiên của 1 angle (theo cột <code>angle</code> trong Google Sheet). V2 trở đi = các script cùng angle nhưng khác biến thể (xem cột <code>video_name</code> dạng <code>angle_v2.mp4</code>, <code>angle_v3.mp4</code>).</div>
+    <h4 style="margin: 32px 0 10px; font-size: 16px; font-weight: 700;">📋 Quy tắc nhận job · Bắt buộc</h4>
+    <ul class="reject-list" style="margin-top: 12px;">
+      <li>
+        <div class="head" style="color: var(--ink);">Tối thiểu 3 video / lần đăng ký</div>
+        Khi nhận job phải claim tối thiểu 3 video. <code>Payment chỉ thanh toán khi hoàn thành tất cả video đã đăng ký</code> — tránh tình trạng nhận rồi bỏ ngang, ảnh hưởng kế hoạch chạy ads.
+      </li>
+      <li>
+        <div class="head" style="color: var(--ink);">Deliver lần đầu trong vòng 48h</div>
+        Tính từ thời điểm claim job. Nộp bản đầu trễ → reject job, mở lại cho người khác.
+      </li>
+      <li>
+        <div class="head" style="color: var(--ink);">Revise trong 24h kể từ feedback</div>
+        Sau khi nhận note QC, có 24h để revise và submit lại. <code>Quá 24h → reject, không pay</code> vì ảnh hưởng workflow nội bộ.
+      </li>
+      <li>
+        <div class="head" style="color: var(--ink);">Reject = không pay, resubmit 1 lần</div>
+        Mỗi video được 1 lần resubmit trong 24h sau feedback. V1 = video đầu của 1 angle (cột <code>angle</code> trong Sheet). V2+ = cùng angle, script khác.
+      </li>
+    </ul>
+
+    <div class="callout" style="margin-top:24px;"><b>Lưu ý ·</b> Tier giá <code>500k/video</code> chỉ áp dụng cho VSL (Video Sales Letter dài) — <strong>không nằm trong scope brief này</strong>. Mọi video trong brief Phantom 2.0 đều ≤ 4 phút, tier tối đa 300k.</div>
   </section>
 
   <section id="s06">
